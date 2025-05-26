@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Auto Pop-Up</title>
   <style>
+    /* Overlay */
     #popupOverlay {
       display: none;
       position: fixed;
@@ -13,6 +14,7 @@
       z-index: 1000;
     }
 
+    /* Pop-up box */
     #popupBox {
       position: absolute;
       top: 50%; left: 50%;
@@ -44,8 +46,8 @@
   <!-- Pop-up Overlay -->
   <div id="popupOverlay">
     <div id="popupBox">
-      <h2>Message</h2>
-      <p id="popupMessage">Welcome to our website!</p>
+      <h2>Dynamic Message</h2>
+      <p id="popupMessage">This is a default message.</p>
       <button id="closeBtn">Close</button>
     </div>
   </div>
@@ -55,16 +57,15 @@
     const popupMessage = document.getElementById('popupMessage');
     const closeBtn = document.getElementById('closeBtn');
 
-    // Show pop-up after 2 seconds
+    // Automatically show pop-up on page load
     window.onload = function () {
-      setTimeout(() => {
-        const dynamicMsg = "Hi your system is Hacked!";
-        popupMessage.textContent = dynamicMsg;
-        popupOverlay.style.display = 'block';
-      }, 2000); // 2-second delay
+      // You can change this message dynamically
+      const dynamicMessage = "Welcome to our website! This message appears automatically.";
+      popupMessage.textContent = dynamicMessage;
+      popupOverlay.style.display = 'block';
     };
 
-    // Close the pop-up
+    // Close popup
     closeBtn.onclick = function () {
       popupOverlay.style.display = 'none';
     };
