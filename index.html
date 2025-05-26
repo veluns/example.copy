@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Auto Pop-Up</title>
+  <style>
+    #popupOverlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+    }
+
+    #popupBox {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      min-width: 300px;
+    }
+
+    #popupBox h2 {
+      margin-top: 0;
+    }
+
+    #closeBtn {
+      margin-top: 15px;
+      padding: 8px 12px;
+      background-color: #f44336;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Pop-up Overlay -->
+  <div id="popupOverlay">
+    <div id="popupBox">
+      <h2>Message</h2>
+      <p id="popupMessage">Welcome to our website!</p>
+      <button id="closeBtn">Close</button>
+    </div>
+  </div>
+
+  <script>
+    const popupOverlay = document.getElementById('popupOverlay');
+    const popupMessage = document.getElementById('popupMessage');
+    const closeBtn = document.getElementById('closeBtn');
+
+    // Show pop-up after 2 seconds
+    window.onload = function () {
+      setTimeout(() => {
+        const dynamicMsg = "Hi your system is Hacked!";
+        popupMessage.textContent = dynamicMsg;
+        popupOverlay.style.display = 'block';
+      }, 2000); // 2-second delay
+    };
+
+    // Close the pop-up
+    closeBtn.onclick = function () {
+      popupOverlay.style.display = 'none';
+    };
+  </script>
+
+</body>
+</html>
