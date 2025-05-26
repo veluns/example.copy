@@ -2,73 +2,75 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Auto Pop-Up</title>
+  <title>Alert Pop-Up</title>
   <style>
-    /* Overlay */
-    #popupOverlay {
+    /* Full-screen overlay */
+    .popup-overlay {
       display: none;
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 1000;
+      background-color: rgba(255, 0, 0, 0.6);
+      z-index: 9999;
     }
 
     /* Pop-up box */
-    #popupBox {
+    .popup-box {
       position: absolute;
       top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-      background: white;
-      padding: 20px;
+      background-color: black;
+      color: red;
+      padding: 30px;
+      border: 3px solid red;
       border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      min-width: 300px;
+      text-align: center;
+      font-family: monospace;
+      box-shadow: 0 0 20px red;
     }
 
-    #popupBox h2 {
-      margin-top: 0;
+    .popup-box h1 {
+      margin: 0 0 10px;
+      font-size: 24px;
     }
 
-    #closeBtn {
+    .popup-box p {
+      font-size: 18px;
+    }
+
+    .close-btn {
       margin-top: 15px;
-      padding: 8px 12px;
-      background-color: #f44336;
+      padding: 10px 20px;
+      background-color: red;
       color: white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
 
   <!-- Pop-up Overlay -->
-  <div id="popupOverlay">
-    <div id="popupBox">
-      <h2>your system is hacked </h2>
-      <p id="popupMessage">This is a default message.</p>
-      <button id="closeBtn">Close</button>
+  <div class="popup-overlay" id="popupOverlay">
+    <div class="popup-box">
+      <h1>⚠️ ALERT!</h1>
+      <p>Your system is hacked!</p>
+      <button class="close-btn" onclick="closePopup()">Close</button>
     </div>
   </div>
 
   <script>
-    const popupOverlay = document.getElementById('popupOverlay');
-    const popupMessage = document.getElementById('popupMessage');
-    const closeBtn = document.getElementById('closeBtn');
-
-    // Automatically show pop-up on page load
-    window.onload = function () {
-      // You can change this message dynamically
-      const dynamicMessage = "warning your screen is sharing";
-      popupMessage.textContent = dynamicMessage;
-      popupOverlay.style.display = 'block';
+    // Show pop-up when the page loads
+    window.onload = function() {
+      document.getElementById("popupOverlay").style.display = "block";
     };
 
-    // Close popup
-    closeBtn.onclick = function () {
-      popupOverlay.style.display = 'none';
-    };
+    // Function to close the pop-up
+    function closePopup() {
+      document.getElementById("popupOverlay").style.display = "none";
+    }
   </script>
 
 </body>
